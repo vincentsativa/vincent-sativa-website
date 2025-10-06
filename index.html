@@ -19,20 +19,15 @@
             scroll-behavior: smooth;
         }
 
-        .patriotic-gradient {
-            background: linear-gradient(135deg, #B22234 0%, #FFFFFF 50%, #3C3B6E 100%);
-            min-height: 100vh;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Fixed positioning */
         .header {
-            background: rgba(0, 0, 0, 0.9);
+            background: #1a1a2e;
             color: white;
             padding: 1rem 0;
             position: fixed;
@@ -41,6 +36,7 @@
             z-index: 1000;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(178, 34, 52, 0.3);
         }
 
         .nav-content {
@@ -52,7 +48,8 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #FF6B6B;
+            color: #DC143C;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .nav-links {
@@ -66,21 +63,23 @@
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         .nav-links a:hover {
-            color: #FF6B6B;
+            color: #DC143C;
         }
 
-        /* Hero Section */
+        /* Hero Section - Fixed to account for header height */
         .hero {
-            background: linear-gradient(135deg, #B22234 0%, #FFFFFF 30%, #3C3B6E 100%);
+            background: linear-gradient(135deg, #DC143C 0%, #FFFFFF 50%, #002868 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px; /* Account for fixed header */
         }
 
         .hero::before {
@@ -90,7 +89,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23000" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(0,40,104,0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -98,17 +98,20 @@
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
+            width: 100%;
         }
 
         .profile-image {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 6px solid #FFD700;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            margin-bottom: 2rem;
+            border: 6px solid #FFFFFF;
+            box-shadow: 0 20px 40px rgba(178, 34, 52, 0.4);
+            margin: 0 auto 2rem auto;
+            display: block;
             transition: transform 0.3s ease;
             animation: float 3s ease-in-out infinite;
+            object-fit: cover;
         }
 
         .profile-image:hover {
@@ -124,11 +127,18 @@
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            color: #FFFFFF;
             animation: pulse 2s ease-in-out infinite alternate;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: #DC143C;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         @keyframes pulse {
@@ -142,7 +152,13 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
         }
 
         /* Button Styles */
@@ -178,35 +194,39 @@
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, #FF6B6B, #FF8E8E);
+            background: linear-gradient(45deg, #DC143C, #FF1744);
             color: white;
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
+            border: 2px solid #FFFFFF;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
+            box-shadow: 0 15px 35px rgba(220, 20, 60, 0.6);
+            background: linear-gradient(45deg, #FF1744, #DC143C);
         }
 
         .btn-secondary {
-            background: linear-gradient(45deg, #4ECDC4, #44A08D);
+            background: linear-gradient(45deg, #002868, #1565C0);
             color: white;
-            box-shadow: 0 10px 25px rgba(78, 205, 196, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 40, 104, 0.4);
+            border: 2px solid #FFFFFF;
         }
 
         .btn-secondary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(78, 205, 196, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 40, 104, 0.6);
+            background: linear-gradient(45deg, #1565C0, #002868);
         }
 
         .btn-outline {
             background: transparent;
-            color: #333;
-            border: 2px solid #333;
+            color: #002868;
+            border: 2px solid #002868;
         }
 
         .btn-outline:hover {
-            background: #333;
+            background: #002868;
             color: white;
             transform: translateY(-3px);
         }
@@ -218,15 +238,20 @@
         }
 
         .section:nth-child(even) {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+        }
+
+        .section:nth-child(odd) {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F8FF 100%);
         }
 
         .section h2 {
             font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            color: #333;
+            color: #002868;
             position: relative;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .section h2::after {
@@ -237,7 +262,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            background: linear-gradient(45deg, #DC143C, #002868);
             border-radius: 2px;
         }
 
@@ -248,7 +273,8 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #FF6B6B;
+            border-left: 5px solid #DC143C;
+            border-right: 5px solid #002868;
         }
 
         .content-card:hover {
@@ -271,7 +297,8 @@
             text-align: center;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            border-top: 4px solid #4ECDC4;
+            border-top: 4px solid #DC143C;
+            border-bottom: 4px solid #002868;
         }
 
         .social-card:hover {
@@ -282,7 +309,7 @@
         .social-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #FF6B6B;
+            color: #DC143C;
         }
 
         /* Book Section */
@@ -298,22 +325,23 @@
             text-align: center;
         }
 
-        .book-cover img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        .book-cover div {
             transition: transform 0.3s ease;
         }
 
-        .book-cover img:hover {
+        .book-cover div:hover {
             transform: scale(1.05) rotateY(10deg);
         }
 
         /* Sponsors Section */
         .sponsors-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #002868 0%, #DC143C 50%, #002868 100%);
             color: white;
             padding: 5rem 0;
+        }
+
+        .sponsors-section h2 {
+            color: white;
         }
 
         .sponsors-grid {
@@ -328,7 +356,7 @@
             padding: 2.5rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
             text-align: center;
         }
@@ -336,12 +364,13 @@
         .sponsor-card:hover {
             transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .sponsor-logo {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #FFD700;
+            color: #FFFFFF;
         }
 
         /* Animations */
@@ -363,7 +392,7 @@
 
         /* Footer */
         .footer {
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a1a2e 0%, #002868 100%);
             color: white;
             padding: 3rem 0;
             text-align: center;
@@ -377,7 +406,7 @@
         }
 
         .footer h3 {
-            color: #FF6B6B;
+            color: #DC143C;
             margin-bottom: 1rem;
         }
 
@@ -392,7 +421,7 @@
         }
 
         .footer-links a:hover {
-            color: #FF6B6B;
+            color: #DC143C;
         }
 
         /* Mobile Responsive */
@@ -401,12 +430,21 @@
                 display: none;
             }
 
+            .hero {
+                padding-top: 100px;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
 
             .hero p {
                 font-size: 1.1rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
             }
 
             .book-showcase {
@@ -454,7 +492,7 @@
             <div class="hero-content">
                 <img src="https://vincentsativa.github.io/profile/IMG_5439.JPEG" alt="Dr. Vincent Sativa" class="profile-image">
                 <h1>Dr. Vincent Sativa</h1>
-                <p class="hero-subtitle">MAGA Liberty Enforcer</p>
+                <span class="hero-subtitle">MAGA Liberty Enforcer</span>
                 <p>The mastermind slinging foreign policy knowledge like nobody's business. In Trump's America, where he's unleashing peace through strength with ceasefires and deals like the Abraham Accords, foreign policy isn't just diplomacy—it's freedom from deep state wars and globalist control.</p>
                 <div class="hero-buttons">
                     <a href="#book" class="btn btn-primary">Get My Book Now</a>
@@ -509,19 +547,23 @@
             <div class="content-card scroll-animate">
                 <div class="book-showcase">
                     <div class="book-cover">
-                        <div style="width: 250px; height: 350px; background: linear-gradient(135deg, #FF6B6B, #4ECDC4); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-align: center; font-size: 1.2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
-                            No More Wars,<br>All Wins!<br><br><small>Trump's Peace Doctrine</small>
+                        <div style="width: 250px; height: 350px; background: linear-gradient(135deg, #DC143C, #FFFFFF, #002868); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #002868; font-weight: bold; text-align: center; font-size: 1.2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border: 3px solid #FFFFFF;">
+                            <div>
+                                <div style="color: #DC143C; font-size: 1.4rem; margin-bottom: 10px;">No More Wars,</div>
+                                <div style="color: #002868; font-size: 1.4rem; margin-bottom: 15px;">All Wins!</div>
+                                <div style="color: #FFFFFF; background: rgba(0,40,104,0.8); padding: 10px; border-radius: 5px; font-size: 0.9rem;">Trump's Peace Doctrine</div>
+                            </div>
                         </div>
                     </div>
                     <div class="book-details">
-                        <h3>Trump's Peace Doctrine and Vance's Iron Grip on Global Threats</h3>
-                        <p><strong>Trump crushes endless wars with unmatched peace through strength, saving lives and supercharging our economy. JD Vance enforces it with hawkish grit to dominate global threats forever.</strong></p>
+                        <h3 style="color: #002868;">Trump's Peace Doctrine and Vance's Iron Grip on Global Threats</h3>
+                        <p><strong style="color: #DC143C;">Trump crushes endless wars with unmatched peace through strength, saving lives and supercharging our economy. JD Vance enforces it with hawkish grit to dominate global threats forever.</strong></p>
                         <p>This book exposes how Trump starved Iran's terror networks without a shot, brokered the Abraham Accords to unite enemies against chaos, and pulled troops from quagmires to redirect trillions back to American wallets.</p>
                         <p>Vance sharpens this legacy, slashing Ukraine aid to crush China and secure borders, while cautioning on Iran entanglements.</p>
-                        <p><strong>This guide arms patriots with facts to own the libs, primary RINOs, and rally for 2028 wins.</strong></p>
+                        <p><strong style="color: #002868;">This guide arms patriots with facts to own the libs, primary RINOs, and rally for 2028 wins.</strong></p>
                         <p>As a lifelong Trump supporter from day one, I wrote this because MAGA delivers results, and Vance is the powerhouse heir to keep it unbreakable.</p>
                         <div style="margin-top: 2rem;">
-                            <span style="font-size: 2rem; color: #FF6B6B; font-weight: bold;">$9.99</span>
+                            <span style="font-size: 2rem; color: #DC143C; font-weight: bold;">$9.99</span>
                             <p style="color: #666; margin-bottom: 2rem;">Grab it before prices rise!</p>
                             <a href="https://bookboom.gumroad.com/l/NoMoreWars" target="_blank" class="btn btn-primary">Buy Now for $9.99</a>
                         </div>
@@ -536,7 +578,7 @@
         <div class="container">
             <h2 class="scroll-animate">Fuel the MAGA Fight!</h2>
             <div class="content-card scroll-animate">
-                <h3>Support the America First Movement</h3>
+                <h3 style="color: #DC143C;">Support the America First Movement</h3>
                 <p>Love my roasts of globalist elites and deep state clowns? Keep the America First fire burning! Drop a tip to help me crank out more truth bombs and stick it to the libs.</p>
                 <p>Every coffee fuels the fight for Trump's peace doctrine and JD Vance's iron grip. Join the patriot party, tip now!</p>
                 <div style="text-align: center; margin-top: 2rem;">
@@ -598,7 +640,7 @@
                     </ul>
                 </div>
             </div>
-            <div style="border-top: 1px solid #333; padding-top: 2rem;">
+            <div style="border-top: 1px solid #444; padding-top: 2rem;">
                 <p>&copy; 2025 Dr. Vincent Sativa. All rights reserved. Powered by patriotism and liberal tears.</p>
             </div>
         </div>
@@ -611,9 +653,13 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerHeight = 80;
+                    const elementPosition = target.offsetTop;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -641,9 +687,9 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
             } else {
-                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.background = '#1a1a2e';
             }
         });
     </script>
