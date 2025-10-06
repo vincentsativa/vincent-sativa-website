@@ -1,0 +1,126 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+ 
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+ 
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+ 
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Vincent Sativa - MAGA Liberty Enforcer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-patriotic-gradient {
+            background: linear-gradient(135deg, #B22234, #FFFFFF, #3C3B6E);
+        }
+    </style>
+</head>
+<body class="bg-patriotic-gradient text-black font-sans">
+    <!-- Header -->
+    <header class="text-center py-8">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight">Dr. Vincent Sativa</h1>
+        <p class="mt-2 text-xl">MAGA Liberty Enforcer</p>
+    </header>
+ 
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-12 bg-white rounded-lg shadow-lg">
+        <!-- Profile Section -->
+        <section class="text-center mb-16">
+  <img src="https://vincentsativa.github.io/profile/IMG_5439.JPEG" alt="Dr. Vincent Sativa Profile" class="w-48 h-48 rounded-full mx-auto border-4 border-blue-300 shadow-lg">
+  <h2 class="text-3xl font-semibold mt-6">MAGA Liberty Enforcer</h2>
+  <p class="mt-4 text-lg">I'm Dr. Vincent Sativa, the mastermind slinging foreign policy knowledge like nobody's business.
+          <br><br>
+    In Trump's America, where he's unleashing peace through strength with ceasefires and deals like the Abraham Accords,
+    foreign policy isn't just diplomacy, it's freedom from deep state wars and globalist control.
+  </p>
+</section>
+        <!-- Support My Work Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-3xl font-semibold">Fuel the MAGA Fight!</h2>
+            <p class="mt-4 text-lg">
+                Love my roasts of globalist elites and deep state clowns? Keep the America First fire burning! Drop a tip to help me crank out more truth bombs and stick it to the libs.
+                <br><br>
+                Every coffee fuels the fight for Trump’s peace doctrine and JD Vance’s iron grip. Join the patriot party, tip now!
+            </p>
+            <a href="https://buymeacoffee.com/drvincentsativa" target="_blank" class="inline-block mt-6 bg-red-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition">Buy Me a Freedom Coffee!</a>
+        </section>
+ 
+        <!-- Rumble Promotion Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-3xl font-semibold">Join My Rumble Revolution!</h2>
+            <p class="mt-4 text-lg">
+                Bypass the media’s lies on my Rumble! Pure MAGA fire, and unfiltered truth to crush woke evil. Join the fight to save America with no-BS patriot vibes. Follow or stay brainwashed!
+            </p>
+            <a href="https://rumble.com/c/UpInSmoke" target="_blank" class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition">Follow on Rumble Now!</a>
+        </section>
+ 
+        <!-- X Promotion Section -->
+        <section class="text-center mb-16">
+            <h2 class="text-3xl font-semibold">Follow My Truth Social Shenanigans</h2>
+            <p class="mt-4 text-lg">
+                    I’m dropping diplomatic bombs that tie into Trump's vision of American leadership in global affairs, roasting scammers, and hyping the future of money as a beacon of freedom.
+                 <br>
+                    </p>
+            <a href="https://truthsocial.com/@maga420" target="_blank" class="inline-block mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg shadow-md transition">Follow Me On Truth Social</a>
+        </section>
+ 
+       <!-- Book Promotion Section -->
+<section class="text-center">
+    <h2 class="text-3xl font-semibold">Get My Book: No More Wars, All Wins!</h2>
+    <p class="mt-4 text-lg">
+        Trump crushes endless wars with unmatched peace through strength, saving lives and supercharging our economy.
+        JD Vance enforces it with hawkish grit to dominate global threats forever.
+        <br><br>
+        <strong>No More Wars, All Wins: Trump’s Peace Doctrine and Vance’s Iron Grip on Global Threats</strong> exposes how Trump starved Iran’s terror networks without a shot, brokered the Abraham Accords to unite enemies against chaos, and pulled troops from quagmires to redirect trillions back to American wallets.
+        Vance sharpens this legacy, slashing Ukraine aid to crush China and secure borders, while cautioning on Iran entanglements.
+        <br><br>
+        This guide arms patriots with facts to own the libs, primary RINOs, and rally for 2028 wins.
+        As a lifelong Trump supporter from day one, I wrote this because MAGA delivers results, and Vance is the powerhouse heir to keep it unbreakable.
+        <br><br>
+        Grab it for $9.99 before prices rise! Join the fight to make America lead without bleeding. Buy now and stand with Trump and Vance forever!
+    </p>
+    <a href="https://bookboom.gumroad.com/l/NoMoreWars" target="_blank" class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition">Buy Now for $9.99</a>
+</section>
+</main>
+ 
+    <!-- Footer -->
+    <footer class="text-center py-8 bg-gray-900 text-white">
+        <p>© 2025 Dr. Vincent Sativa. All rights reserved. Powered by sarcasm, and liberal tears.</p>
+    </footer>
+</body>
+</html>
